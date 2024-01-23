@@ -1,0 +1,1 @@
+the army found the people in poverty and left them in comparative wealth

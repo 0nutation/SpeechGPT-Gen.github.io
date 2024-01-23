@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    <link href="style.css" rel="stylesheet">
+    <meta charset="utf-8">
+
+	<title>SpeechGPT-Gen</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1091.0" data-gr-ext-installed="">
+
+
+<div class="container" >
+<header role="banner">
+</header>
+<main role="main">
+<article itemscope itemtype="https://schema.org/BlogPosting">
+
+<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+    <div class="column has-text-centered">
+    <h1 class="title is-1 publication-title"> <b>SpeechGPT-Gen:</b>  </h1>
+    <h3 class="title is-2 publication-title"> <b>Scaling Chain-of-Information Speech Generation</b></h3>
+    </div>
+    <br>
+    <div class="is-size-5">
+        <span class="author-block">
+          <h4 style="text-align: center;"><b>Authors: </b>Dong Zhang<sup>*</sup>, Xin Zhang<sup>*</sup>, Jun Zhan, Shimin Li, Yaqian Zhou, Xipeng Qiu </h4>
+    </div>
+
+    <div class="is-size-5 publication-authors">
+        <!-- <span class="author-block"><h5 style="text-align: center;"> (<sup>*</sup>Equal Contribution) </h5></span> -->
+        <span class="author-block"><h4 style="text-align: center;"><b style="color:#d76100; font-weight:normal">&#x25B6 </b>School of Computer Science, Fudan University </h4></span>
+    </div>
+
+
+    <div class="column has-text-centered">
+
+        <span class="link-block">
+            <a href="" target="_blank"
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+                <i class="ai ai-arxiv"></i>
+            </span>
+            <span>Paper</span>
+            </a>
+        </span>
+        
+        <span class="link-block">
+            <a href="https://github.com/0nutation/SpeechGPT" target="_blank"
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+                <i class="fab fa-github"></i>
+            </span>
+            <span>SpeechGPT-Gen</span>
+            </a>
+        </span>
+
+
+
+
+    </div>
+</div>
+
+
+<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Overview</h2>
+        </div>
+    </div>
+    <p style="font-size: 18px;">
+        Current large-scale speech generative models
+        have demonstrated remarkable in-context speech
+        generation abilities, generalizing effectively to to
+        unseen speakers. However, from the information
+        modeling perspective, certain redundancies exist
+        in their modeling process. We introduce Chain-of-
+        Information Generation, a semantic and percep-
+        tual disentangled approach to large-scale speech
+        generation, which performs semantic and percep-
+        tual modeling sequentially. Based on that, we
+        build SpeechGPT-Gen, a large speech langauge
+        model with strong semantic and perceptual model-
+        ing abilities. SpeechGPT-Gen consists of a LLM
+        based autoregressive model for semantic model-
+        ing and a flow matching based non-autoregressive
+        model for perceptual modeling. We propose to
+        improve the efficiency of flow matching by in-
+        jecting semantic information into the prior dis-
+        tribution. Scaling up the model parameters to 8
+        billion, SpeechGPT-Gen achieves impressive per-
+        formance on zero-shot text-to-speech, zero-shot
+        voice conversion and speech-to-speech dialogue,
+        showing strong semantic and perceptual modeling
+        capabilities and the effectiveness and efficiency
+        of Chain-of-Information Generation method.
+    </p>
+    <br>
+    <br>
+    <div class="text-center">
+        <img id="teaser" width="60%" src="imgs/coi.png">     
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="text-center">
+        <img id="teaser" width="90%" src="imgs/model.png">     
+    </div>
+</div>
+
+
+<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+    <h3>Speech-to-Speech Dialogue:</h3>
+    <p style="font-size: 18px;">
+        SpeechGPT-Gen can respond to a speech instruction with speech response matching the timbre of a given speech prompt.
+    </p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+			<thead>
+			<tr>
+            <th style="text-align: center">Instruction Speech</th>
+            <th style="text-align: center">Prompt Speech</th>
+			<th style="text-align: center">Response Speech</th>
+			</tr>
+			</thead>
+			<tbody>
+
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample0/instruction.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample0/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample0/response.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample1/instruction.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample1/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample1/response.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample2/instruction.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample2/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample2/response.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample3/instruction.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample3/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample3/response.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample4/instruction.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample4/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample4/response.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample5/instruction.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample5/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample5/response.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample6/instruction.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample6/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample6/response.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample7/instruction.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample7/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="dia/sample7/response.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+            
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+    <h3>Zero-shot Voice Conversion:</h3>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+			<thead>
+			<tr>
+            <th style="text-align: center">Source Speech</th>
+            <th style="text-align: center">Prompt Speech</th>
+            <th style="text-align: center">Generated Speech</th>
+			</tr>
+			</thead>
+			<tbody>
+            
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample1/source.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample1/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample1/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+            
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample2/source.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample2/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample2/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample3/source.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample3/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample3/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+            
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample4/source.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample4/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample4/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample5/source.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample5/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_vc/sample5/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            </tr>
+
+            
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+    <h3>Zero-shot Text-to-Speech:</h3>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+			<thead>
+			<tr>
+            <th style="text-align: center">Text</th>
+			<th style="text-align: center">Speaker Prompt</th>
+            <th style="text-align: center">SpeechGPT-Gen</th>
+            <th style="text-align: center">GroundTruth</th>
+            
+			</tr>
+			</thead>
+			<tbody>
+            <td style="text-align: center;vertical-align:middle;width: 800px">the phrase and the day and the scene harmonized in a chord.</td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/1/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+			<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/1/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/1/groundtruth.wav" autoplay/>Your browser does not support the audio element.</audio></td>      
+            </tr>
+			
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px">the examination however resulted in no discovery.</td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/2/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/2/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/2/groundtruth.wav" autoplay/>Your browser does not support the audio element.</audio></td>      
+            </tr>
+			
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px">consumption becomes a larger element in the standard of living in the city than in the country.</td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/3/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/3/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/3/groundtruth.wav" autoplay/>Your browser does not support the audio element.</audio></td>      
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px">the army found the people in poverty and left them in comparative wealth.</td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/4/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/4/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/4/groundtruth.wav" autoplay/>Your browser does not support the audio element.</audio></td>      
+            </tr>
+
+            <tr>
+            <td style="text-align: center;vertical-align:middle;width: 800px">I want to put myself on discussion also.</td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/5/prompt.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/5/generated.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls" style="width: 140px;"><source src="zs_tts/5/groundtruth.wav" autoplay/>Your browser does not support the audio element.</audio></td>      
+            </tr>
+
+            </tbody>
+            </table>
+        </div>
+</div>
+
+
+
+
+
+
