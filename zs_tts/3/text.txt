@@ -1,1 +1,0 @@
-consumption becomes a larger element in the standard of living in the city than in the country
